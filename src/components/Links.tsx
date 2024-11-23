@@ -1,4 +1,4 @@
-import { Modal } from "@/components/MCreateLinkModal"
+import { Modal } from "../components/CreateLinkModal"
 import { motion } from "framer-motion"
 
 export const Links = () => {

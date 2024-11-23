@@ -4,7 +4,7 @@ import { ToggleTheme } from "./ToggleTheme"
 import { Link } from "react-router-dom"
 
 
-export const Navbar = () => {
+export const Header = () => {
 
   return (
     <header className="border-b bg-neutral-900 border-zinc-800">

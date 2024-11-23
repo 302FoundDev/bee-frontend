@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
-import { Button } from "@/components/ui/Button"
-import { useAuth } from "@/context/AuthContext"
+import { Button } from "../components/ui/Button"
+import { useAuth } from "../context/AuthContext"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 
 
-export const Register = () => {
+export const Signup = () => {
   const { isAuthenticated, signup, signin } = useAuth()
   const [redirectToDashboard, setRedirectToDashboard] = useState(false)
 

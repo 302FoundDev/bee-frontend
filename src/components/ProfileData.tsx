@@ -2,7 +2,7 @@ import { IoSaveOutline } from "react-icons/io5"
 import { Button } from "./ui/Button"
 import { motion } from "framer-motion"
 
-export default function UserProfileUpdateWithQR() {
+export default function UserProfileUpdate() {
   const handleSubmit = (e) => {
     e.preventDefault()
 

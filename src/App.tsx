@@ -1,14 +1,14 @@
 import "@fontsource-variable/onest"
 import { Route, Routes } from "react-router-dom"
-import { Header } from "@/components/Header"
-import { Hero } from "@/pages/Hero"
-import { Signin } from "@/pages/Signin"
-import { Signup } from "@/pages/Signup"
-import { Footer } from "@/components/Footer"
-import { NotFound } from "@/pages/NotFound"
-import { DashboardLayout } from "@/dashboard/DashboardLayout"
-import { Links } from "@/components/Links"
-import UserProfileUpdateWithQR from "@/components/UserProfileUpdate"
+import { Header } from "./components/Header"
+import { Hero } from "./pages/Hero"
+import { Signin } from "./pages/Signin"
+import { Signup } from "./pages/Signup"
+import { Footer } from "./components/Footer"
+import { NotFound } from "./pages/404/NotFound"
+import { DashboardLayout } from "./dashboard/DashboardLayout"
+import { Links } from "./components/Links"
+import UserProfileUpdate from "./components/ProfileData"
 
 const App = () => {
   return (
@@ -28,7 +28,7 @@ const App = () => {
         <Route>
           <Route path="dashboard" element={<DashboardLayout />}>
             <Route index element={<Links />} />
-            <Route path="settings" element={<UserProfileUpdateWithQR />} />
+            <Route path="settings" element={<UserProfileUpdate />} />
           </Route>
         </Route>
 
@@ -41,3 +41,5 @@ const App = () => {
 }
 
 export default App
+
+ 
