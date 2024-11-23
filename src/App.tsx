@@ -5,10 +5,9 @@ import { Hero } from "@/pages/Hero"
 import { Signin } from "@/pages/Signin"
 import { Signup } from "@/pages/Signup"
 import { Footer } from "@/components/Footer"
-import { NotFound } from "@/pages/404/NotFound"
+import { NotFound } from "@/pages/NotFound"
 import { DashboardLayout } from "@/dashboard/DashboardLayout"
 import { Links } from "@/components/Links"
-import { ProtectedRoute } from "@/routes"
 import UserProfileUpdateWithQR from "@/components/UserProfileUpdate"
 
 const App = () => {
