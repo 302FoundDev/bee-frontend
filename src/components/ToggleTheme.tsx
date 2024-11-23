@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 export const ToggleTheme = () => {
     const savedTheme = localStorage.getItem("theme")
 
-    const [selectedTheme, setSelectedTheme] = useState(savedTheme)
+    const [selectedTheme, setSelectedTheme] = useState(savedTheme || "light")
 
     const handleChange = (event) => {
         const newTheme = event.target.value
