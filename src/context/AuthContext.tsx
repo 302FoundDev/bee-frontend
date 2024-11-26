@@ -1,18 +1,12 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect, ReactNode } from "react"
 import Cookies from 'js-cookie'
 
-interface User {
-  id: string,
-  name: string,
-  email: string
-}
-
 interface AuthContextType {
-  user: User | null;
+  user: string;
   isAuthenticated: boolean;
-  signin: (data: any) => Promise<void>;
-  signup: (data: any) => Promise<void>;
-  signout: () => Promise<void>;
+  signin: (credentials: unknown) => Promise<void>;
+  signup: (data: unknown) => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null)
@@ -25,28 +19,30 @@ export const useAuth = () => {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/auth'
-  const API_USER_URL = import.meta.env.VITE_API_USER_URL || 'http://localhost:5000/api/user'
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/auth'
+  const API_USER_URL = import.meta.env.VITE_API_USER_URL || 'http://localhost:5000/users'
 
-  const signin = async (data: any) => {
+  const signin = async (credentials: unknown) => {
     try {
-      const response = await fetch(`${API_URL}/signin`, {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(credentials),
         credentials: 'include'
       })
 
-      const res = await response.json()
+      console.log(response)
 
       if (response.ok) {
+        const data = await response.json()
+        setUser(data.user)
         setIsAuthenticated(true)
       } else {
         setIsAuthenticated(false)
-        throw new Error(res.message || 'Error signing in')
+        throw new Error('Error signing in')
       }
     } catch (error) {
       console.error(error)
@@ -54,7 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const signup = async (data: any) => {
+  const signup = async (data: unknown) => {
     try {
       const response = await fetch(`${API_USER_URL}/signup`, {
         method: 'POST',
@@ -66,6 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const res = await response.json()
 
       if (response.status === 200) {
+        // This is where we would set the user in state
         console.log(res)
       } else {
         throw new Error(res.message || 'Error registering')
@@ -76,45 +73,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const signout = async () => {
-    const response = await fetch(`${API_URL}/signout`, {
-      method: 'POST',
-      credentials: 'include'
-    })
-
-    Cookies.remove('access_token')
-    setIsAuthenticated(false)
-    setUser(null)
-    localStorage.removeItem('user')
-  }
-
-  const checkSession = async () => {
-    try {
-      const response = await fetch(`${API_URL}/check-auth`, {
-        method: 'GET',
-        credentials: 'include'
-      })
-
-      const res = await response.json()
-
-      if (response.ok) {
-        setUser(res.user.user)
-        setIsAuthenticated(true)
-      } else {
-        setIsAuthenticated(false)
-      }
-    } catch (error) {
-      console.error('Error checking session:', error)
-      setIsAuthenticated(false)
-    }
-  }
-
-  useEffect(() => {
-    checkSession()
-  }, [])
-
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signin, signup, signout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, signin, signup, }}>
       {children}
     </AuthContext.Provider>
   )
