@@ -11,7 +11,7 @@ export const Footer = () => {
         <div className="flex gap-1.5">
           © 2024
           <a 
-            href="https://github.com/302FoundDev" 
+            href="https://302foundev.es" 
             className="hover:underline hover:opacity-85" 
             rel="noopener"
             target="_blank"
