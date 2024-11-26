@@ -7,8 +7,8 @@ export const ToggleTheme = () => {
 
     const [selectedTheme, setSelectedTheme] = useState(savedTheme || "light")
 
-    const handleChange = (event) => {
-        const newTheme = event.target.value
+    const handleToggle = () => {
+        const newTheme = selectedTheme === "light" ? "dark" : "light"
         setSelectedTheme(newTheme)
 
         localStorage.setItem("theme", newTheme)
@@ -21,7 +21,7 @@ export const ToggleTheme = () => {
     return (
         <>
             <button
-                onClick={()=>handleChange({target: {value: selectedTheme === "light" ? "dark" : "light"}})}
+                onClick={handleToggle}
                 className="flex items-center gap-1 size-7"
             >
                 {selectedTheme === "light" ? <FaMoon className="text-yellow-500 size-5" /> : <GiSun className="text-yellow-400 size-5" />}
