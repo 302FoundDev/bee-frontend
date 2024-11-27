@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button"
+import { Button } from "../components/ui/Button"
 import { IoMdClose } from "react-icons/io"
 import { MdRocketLaunch } from "react-icons/md"
 import { useState } from "react"
@@ -54,7 +54,7 @@ export const Modal = () => {
             transition={{ duration: 0.3 }}
           >
 
-            <div className="flex justify-between items-center mb-12">
+            <div className="flex items-center justify-between mb-12">
               <h3>Create a new link: </h3>
               <button onClick={closeModal} type="button">
                 <IoMdClose />
@@ -66,7 +66,7 @@ export const Modal = () => {
                 <input
                   type="text"
                   placeholder="https://example.com"
-                  className="px-4 py-2 mt-1 bg-transparent rounded-md border placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="px-4 py-2 mt-1 bg-transparent border rounded-md placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
                 />
               </label>
               <label className="flex flex-col text-[15px] mb-6 text-black dark:text-gray-200">
@@ -74,7 +74,7 @@ export const Modal = () => {
                 <input
                   type="text"
                   placeholder="yourCustomLink"
-                  className="px-4 py-2 mt-1 bg-transparent rounded-md border placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="px-4 py-2 mt-1 bg-transparent border rounded-md placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
                 />
               </label>
 
@@ -82,12 +82,12 @@ export const Modal = () => {
                 Desc:
                 <textarea
                   name="description"
-                  className="overflow-auto px-4 py-1 mt-1 w-full h-20 bg-transparent rounded-md border placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="w-full h-20 px-4 py-1 mt-1 overflow-auto bg-transparent border rounded-md placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
                   placeholder="Enter a description"
                 />
               </label>
 
-              <div className="inline-flex gap-2 justify-end items-end mt-8 w-full">
+              <div className="inline-flex items-end justify-end w-full gap-2 mt-8">
                 <Button
                   onClick={closeModal}
                   variant="transparent"
@@ -97,7 +97,7 @@ export const Modal = () => {
                 </Button>
                 <Button
                   type="submit"
-                  className="inline-flex gap-1 items-center w-28 border border-neutral-300 dark:border-neutral-800"
+                  className="inline-flex items-center gap-1 border w-28 border-neutral-300 dark:border-neutral-800"
                   variant="transparent"
                 >
                   <MdRocketLaunch />

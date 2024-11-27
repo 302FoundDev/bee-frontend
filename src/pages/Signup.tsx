@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
 import { Button } from "../components/ui/Button"
@@ -16,7 +17,7 @@ export const Signup = () => {
     }
   }, [isAuthenticated])
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault()
 
     const fields = Object.fromEntries(new FormData(event.currentTarget))

@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { Sidenav } from '@/components/Sidenav'
+import { Sidenav } from '../components/Sidenav'
 import { Outlet } from 'react-router-dom'
 
 export const DashboardLayout = () => {
