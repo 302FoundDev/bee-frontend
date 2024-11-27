@@ -8,7 +8,13 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/comfortaa':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fontsource-variable/onest':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource-variable/plus-jakarta-sans':
         specifier: ^5.1.0
         version: 5.1.0
       '@vitejs/plugin-react':
@@ -23,6 +29,9 @@ importers:
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
+      lucide-react:
+        specifier: ^0.461.0
+        version: 0.461.0(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -346,8 +355,14 @@ packages:
     resolution: {integrity: sha512-2b/g5hRmpbb1o4GnTZax9N9m0FXzz9OV42ZzI4rDDMDuHUqigAiQCEWChBWCY4ztAGVRjoWT19v0yMmc5/L5kA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@fontsource-variable/comfortaa@5.1.0':
+    resolution: {integrity: sha512-pbI/UlyuXOcmxk5V5TXvCCQkMOmLaDZxIpSIGZk12ZKGqKQkw5uId2bzoD1aaX3/EbZM4sor+lEp47uttQ2Gcw==}
+
   '@fontsource-variable/onest@5.1.0':
     resolution: {integrity: sha512-8jspwmuPWtC2p4gxmjUIQ2JugqCcClFwlD1DEJt+gARgZMm3PI62rYivoKVUDB3Q6hdQxeL5wdzjxCOnzTU5BA==}
+
+  '@fontsource-variable/plus-jakarta-sans@5.1.0':
+    resolution: {integrity: sha512-K7o2GO7/quVFFyfjTqYZu0ng4KJGf60KSAGbvUWwKuH+/Giyl6Qe/EqnGLcjrl9AmXZzTvtRB1xpkASn8FNFoQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1174,6 +1189,11 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
+  lucide-react@0.461.0:
+    resolution: {integrity: sha512-Scpw3D/dV1bgVRC5Kh774RCm99z0iZpPv75M6kg7QL1lLvkQ1rmI1Sjjic1aGp1ULBwd7FokV6ry0g+d6pMB+w==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -1812,7 +1832,11 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
+  '@fontsource-variable/comfortaa@5.1.0': {}
+
   '@fontsource-variable/onest@5.1.0': {}
+
+  '@fontsource-variable/plus-jakarta-sans@5.1.0': {}
 
   '@humanfs/core@0.19.1': {}
 
@@ -2580,6 +2604,10 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  lucide-react@0.461.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   merge2@1.4.1: {}
 

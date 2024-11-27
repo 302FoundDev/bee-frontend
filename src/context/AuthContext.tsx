@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, useEffect, ReactNode } from "react"
-import Cookies from 'js-cookie'
+import { createContext, useContext, useState, ReactNode } from "react"
 
 interface AuthContextType {
   user: string;
@@ -19,7 +18,7 @@ export const useAuth = () => {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/auth'

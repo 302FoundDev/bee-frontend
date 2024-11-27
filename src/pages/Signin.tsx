@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
 import { Link, Navigate } from "react-router-dom"
@@ -11,7 +12,7 @@ export const Signin = () => {
     if (isAuthenticated) <Navigate to="/dashboard" />
   }, [isAuthenticated])
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault()
 
     const formData = new FormData(event.target)

@@ -1,4 +1,3 @@
-import "@fontsource-variable/onest"
 import { Route, Routes } from "react-router-dom"
 import { Header } from "./components/Header"
 import { Hero } from "./pages/Hero"
