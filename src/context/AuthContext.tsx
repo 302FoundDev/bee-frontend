@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, ReactNode } from "react"
 
 interface AuthContextType {
-  user: string;
-  isAuthenticated: boolean;
+  user: string | null;
   signin: (credentials: unknown) => Promise<void>;
   signup: (data: unknown) => Promise<void>;
 }
@@ -18,8 +18,9 @@ export const useAuth = () => {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState('')
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/auth'
   const API_USER_URL = import.meta.env.VITE_API_USER_URL || 'http://localhost:5000/users'
@@ -32,8 +33,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         body: JSON.stringify(credentials),
         credentials: 'include'
       })
-
-      console.log(response)
 
       if (response.ok) {
         const data = await response.json()
