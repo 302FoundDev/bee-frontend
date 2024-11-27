@@ -8,7 +8,7 @@ function UserBtn() {
   return (
     <>
       {
-        !isAuthenticated ? (
+        isAuthenticated ? (
           <div className="z-10 rounded-full size-8">
             <img
             className="w-8 h-8 rounded-full cursor-pointer"
