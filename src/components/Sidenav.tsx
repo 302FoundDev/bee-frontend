@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from 'react-router-dom'
 
-export const Sidenav = ({ pathname }) => {
+export const Sidenav = ({ pathname }: any) => {
 
   return (
     <section className='border-b-2 border-zinc-800'>
