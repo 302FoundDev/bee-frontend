@@ -20,7 +20,7 @@ export const Modal = () => {
   return (
     <section className="flex flex-col items-center">
       <Button
-        className="w-48 inline-flex py-2 items-center gap-1.5 dark:hover:bg-neutral-800 border-neutral-300 dark:border-neutral-800"
+        className="w-48 inline-flex items-center gap-1.5 border-neutral-300 dark:border-neutral-800"
         variant="secondary"
         onClick={openModal}
       >
@@ -66,7 +66,7 @@ export const Modal = () => {
                 <input
                   type="text"
                   placeholder="https://example.com"
-                  className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
                 />
               </label>
               <label className="flex flex-col text-[15px] mb-6 text-black dark:text-gray-200">
@@ -74,7 +74,7 @@ export const Modal = () => {
                 <input
                   type="text"
                   placeholder="yourCustomLink"
-                  className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
                 />
               </label>
 
@@ -82,7 +82,7 @@ export const Modal = () => {
                 Desc:
                 <textarea
                   name="description"
-                  className="w-full h-20 px-4 py-2 mt-1 overflow-auto border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="w-full h-20 px-4 py-2 mt-1 overflow-auto border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
                   placeholder="Enter a description"
                 />
               </label>
@@ -90,7 +90,7 @@ export const Modal = () => {
               <div className="inline-flex items-end justify-end w-full gap-2 mt-8">
                 <Button
                   onClick={closeModal}
-                  variant="transparent"
+                  variant="secondary"
                   className="w-24 border border-neutral-300 dark:border-neutral-800"
                 >
                   Cancel
@@ -98,7 +98,7 @@ export const Modal = () => {
                 <Button
                   type="submit"
                   className="inline-flex items-center gap-1 border w-28 border-neutral-300 dark:border-neutral-800"
-                  variant="transparent"
+                  variant="secondary"
                 >
                   <MdRocketLaunch />
                   Create

@@ -25,7 +25,7 @@ export const Button = ({
 
   const variants = {
     primary: 'bg-green-700 hover:bg-green-800',
-    secondary: 'bg-blue-600 hover:bg-blue-700 text-white rounded-md',
+    secondary: 'bg-blue-600 hover:bg-blue-700 text-white rounded-md px-4 py-2',
     danger: 'bg-red-700 hover:bg-red-800',
     outlined: 'border-2 border-pink-700 hover:bg-pink-700 hover:text-white',
     exotic: 'bg-indigo-700 hover:bg-indigo-800',
