@@ -3,10 +3,9 @@ import { GiSun } from "react-icons/gi"
 import { FaMoon } from "react-icons/fa"
 
 export const ToggleTheme = () => {
-    const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-    const savedTheme = localStorage.getItem("theme") || defaultTheme
+    const savedTheme = localStorage.getItem("theme")
 
-    const [selectedTheme, setSelectedTheme] = useState(savedTheme || "light")
+    const [selectedTheme, setSelectedTheme] = useState(savedTheme || "dark")
 
     const handleToggle = () => {
         const newTheme = selectedTheme === "light" ? "dark" : "light"
