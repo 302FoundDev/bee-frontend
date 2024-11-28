@@ -20,8 +20,8 @@ export const Modal = () => {
   return (
     <section className="flex flex-col items-center">
       <Button
-        className="w-48 inline-flex items-center gap-1.5 dark:hover:bg-neutral-800 border-neutral-300 dark:border-neutral-800"
-        variant="transparent"
+        className="w-48 inline-flex py-2 items-center gap-1.5 dark:hover:bg-neutral-800 border-neutral-300 dark:border-neutral-800"
+        variant="secondary"
         onClick={openModal}
       >
         <img className="size-4" src="/plus.svg" alt="plus icon" />
@@ -30,7 +30,7 @@ export const Modal = () => {
 
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 z-10 bg-black bg-opacity-50"
+          className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export const Modal = () => {
       {
         isModalOpen && (
           <motion.div
-            className="mt-18 w-80 border rounded-md h-[480px] lg:w-[470px] p-4 border-neutral-300 dark:border-neutral-800 z-20"
+            className="mt-18 w-80 border rounded-md h-[480px] lg:w-[470px] p-4 bg-white dark:bg-black border-neutral-300 dark:border-neutral-800 z-20"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
@@ -66,7 +66,7 @@ export const Modal = () => {
                 <input
                   type="text"
                   placeholder="https://example.com"
-                  className="px-4 py-2 mt-1 bg-transparent border rounded-md placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
                 />
               </label>
               <label className="flex flex-col text-[15px] mb-6 text-black dark:text-gray-200">
@@ -74,7 +74,7 @@ export const Modal = () => {
                 <input
                   type="text"
                   placeholder="yourCustomLink"
-                  className="px-4 py-2 mt-1 bg-transparent border rounded-md placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
                 />
               </label>
 
@@ -82,7 +82,7 @@ export const Modal = () => {
                 Desc:
                 <textarea
                   name="description"
-                  className="w-full h-20 px-4 py-1 mt-1 overflow-auto bg-transparent border rounded-md placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
+                  className="w-full h-20 px-4 py-2 mt-1 overflow-auto border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800 dark:placeholder:text-neutral-400"
                   placeholder="Enter a description"
                 />
               </label>
