@@ -95,7 +95,7 @@ export default function UserProfileUpdate() {
           </div>
         </div>
 
-        <div className="px-5 py-5 border rounded-md shadow border-neutral-800">
+        <div className="px-5 py-5 border rounded-md shadow bg-neutral-100 border-zinc-300 dark:border-neutral-800 dark:bg-transparent">
           <div>
             <h2 className="text-3xl font-semibold">Account</h2>
             <p className="mt-3 text-sm text-gray-700 dark:text-gray-400">
@@ -106,11 +106,10 @@ export default function UserProfileUpdate() {
           <div className="w-full gap-2 mt-8">
             <h4>Delete account:</h4>
             <Button
-              className="inline-flex items-center justify-center w-full gap-2 py-2 mx-0 mt-2 text-white md:w-48 lg:w-48"
+              className="inline-flex items-center justify-center w-full gap-2 py-2 mx-0 mt-2 text-white rounded-md md:w-48 lg:w-48"
               variant="danger"
             >
-              Delete account
-              <img className="size-5" src="/delete.svg" alt="delete icon" />
+              🗑️ Delete account
             </Button>
           </div>
         </div>

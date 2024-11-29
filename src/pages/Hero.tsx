@@ -27,7 +27,7 @@ export const Hero = () => {
 
         <article className="pt-10 mx-auto">
           <a
-            href="https://github.com/LaCocinaDePapa/beely"
+            href="https://github.com/302FoundDev/bee-frontend"
             rel="noopener"
             target="_blank"
             className="flex items-center justify-center gap-2 py-2 mx-auto text-base font-medium transition bg-blue-700 rounded-full hover:scale-105 max-w-48 hover:bg-blue-800"

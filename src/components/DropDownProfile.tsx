@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { FaArrowRight } from "react-icons/fa6";
 import { useState } from "react";
+import { IoSettingsOutline } from "react-icons/io5";
+import { TiHomeOutline } from "react-icons/ti";
+import { MdOutlineDashboard } from "react-icons/md";
+
 
 export const DropDownProfile = () => {
   const { isAuthenticated } = useAuth();
@@ -16,9 +20,10 @@ export const DropDownProfile = () => {
   }
 
   const links = [
-    { name: "Dashboard", to: "/dashboard" },
-    { name: "Settings", to: "/dashboard/settings" },
-    { name: "Sign out", to: "/signout" }
+    { icon: <TiHomeOutline />, name: "Home", to: "/" },
+    {  icon: <MdOutlineDashboard />, name: "Dashboard", to: "/dashboard" },
+    { icon: <IoSettingsOutline />, name: "Settings", to: "/dashboard/settings" },
+    { icon: <FaArrowRight />, name: "Sign out", to: "/signout" }
   ]
 
   return (
@@ -35,7 +40,13 @@ export const DropDownProfile = () => {
 
             {
               isDropOpen && (
-                <div className="absolute z-20 w-44 py-2 mt-2 transition ease-in-out bg-white dark:bg-black dark:border-zinc-800 rounded-lg shadow-xl right-[32rem] top-16">
+                <div onClick={closeDrop} className="fixed inset-0 z-10"></div>
+              )
+            }
+
+            {
+              isDropOpen && (
+                <div className="absolute z-20 w-40 py-2 px-2 mt-2 transition scale-105 bg-white dark:bg-black/50 dark:border-zinc-800 rounded-md shadow-xl right-[33rem]">
                   {
                     links.map((link, index) => {
                       return (
@@ -43,9 +54,9 @@ export const DropDownProfile = () => {
                           key={index}
                           to={link.to}
                           onClick={closeDrop}
-                          className="block px-4 py-2 text-sm font-semibold text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100"
+                          className="flex gap-1.5 items-center px-4 py-2 text-sm font-semibold rounded text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-slate-800 hover:text-neutral-900 dark:hover:text-neutral-100"
                         >
-                          {link.name}
+                          {link.icon}{link.name}
                         </Link>
                       )
                     })
