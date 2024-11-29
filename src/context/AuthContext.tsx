@@ -4,6 +4,7 @@ import { createContext, useContext, useState, ReactNode } from "react"
 
 interface AuthContextType {
   user: string | null;
+  isAuthenticated: boolean | null;
   signin: (credentials: unknown) => Promise<void>;
   signup: (data: unknown) => Promise<void>;
 }
