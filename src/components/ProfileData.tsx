@@ -83,7 +83,7 @@ export default function UserProfileUpdate() {
               </div>
               <div className="mt-8">
                 <Button
-                  variant="neutral900"
+                  variant="secondary"
                   type="submit"
                   className="inline-flex items-center justify-center gap-1 w-full text-[15px] px-2 py-2 text-white rounded-md transition ease-in-out md:w-48 lg:w-48"
                 >

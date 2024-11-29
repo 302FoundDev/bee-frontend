@@ -26,10 +26,10 @@ export const ToggleTheme = () => {
                     aria-label={`Change theme ${selectedTheme === "light" ? "dark" : "light"}`}
             >
                 {selectedTheme === "light" ? (
-                    <FaMoon className="text-yellow-400 size-5" />
+                     <GiSun className="text-yellow-500 size-5" />
                 )
                 : (
-                    <GiSun className="text-yellow-500 size-5" />
+                   <FaMoon className="text-yellow-400 size-5" />
                 )}
             </button>
         </>

@@ -5,6 +5,8 @@ import { useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TiHomeOutline } from "react-icons/ti";
 import { MdOutlineDashboard } from "react-icons/md";
+import { IoMdLogOut } from "react-icons/io";
+
 
 
 export const DropDownProfile = () => {
@@ -23,7 +25,7 @@ export const DropDownProfile = () => {
     { icon: <TiHomeOutline />, name: "Home", to: "/" },
     {  icon: <MdOutlineDashboard />, name: "Dashboard", to: "/dashboard" },
     { icon: <IoSettingsOutline />, name: "Settings", to: "/dashboard/settings" },
-    { icon: <FaArrowRight />, name: "Sign out", to: "/signout" }
+    { icon: <IoMdLogOut />, name: "Sign out", to: "/signout" }
   ]
 
   return (
