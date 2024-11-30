@@ -3,6 +3,7 @@ import { IoMdClose } from "react-icons/io"
 import { MdRocketLaunch } from "react-icons/md"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { createSlug } from "../services/api"
 
 export const Modal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -15,7 +16,22 @@ export const Modal = () => {
     setIsModalOpen(!isModalOpen)
   }
 
-  console.log(isModalOpen)
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const form = event.currentTarget as HTMLFormElement
+    const formData = new FormData(form)
+
+    const originalUrl = formData.get('originalUrl') as string
+    const slug = formData.get('slug') as string
+    const description = formData.get('description') as string
+
+    try {
+      await createSlug(originalUrl, slug, description)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <section className="flex flex-col items-center">
@@ -60,10 +76,11 @@ export const Modal = () => {
                 <IoMdClose />
               </button>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <label className="flex flex-col mb-6 text-[15px] text-black dark:text-gray-200">
                 Destination URL:
                 <input
+                  name="originalUrl"
                   type="text"
                   placeholder="https://example.com"
                   className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
@@ -72,6 +89,7 @@ export const Modal = () => {
               <label className="flex flex-col text-[15px] mb-6 text-black dark:text-gray-200">
                 Short link (optional):
                 <input
+                  name="slug"
                   type="text"
                   placeholder="yourCustomLink"
                   className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"

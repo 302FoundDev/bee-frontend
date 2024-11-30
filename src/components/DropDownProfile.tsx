@@ -31,7 +31,7 @@ export const DropDownProfile = () => {
   return (
     <>
       {
-        !isAuthenticated ? (
+        isAuthenticated ? (
           <div className="relative">
             <button onClick={openDrop}>
               <img
