@@ -21,7 +21,6 @@ export const useAuth = () => {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
 
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/auth'
   const API_USER_URL = import.meta.env.VITE_API_USER_URL || 'http://localhost:5000/users'
