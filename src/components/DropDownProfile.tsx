@@ -32,23 +32,23 @@ export const DropDownProfile = () => {
     <>
       {
         !isAuthenticated ? (
-          <div className="z-10 rounded-full size-8">
+          <div className="relative">
             <button onClick={openDrop}>
               <img
-                className="w-8 h-8 rounded-full cursor-pointer"
+                className="relative z-10 rounded-full size-8"
                 src="https://flowbite-react.com/images/people/profile-picture-5.jpg"
               />
             </button>
 
             {
               isDropOpen && (
-                <div onClick={closeDrop} className="fixed inset-0 z-10"></div>
+                <div onClick={closeDrop} className="fixed inset-0 z-0"></div>
               )
             }
 
             {
               isDropOpen && (
-                <div className="absolute z-20 w-40 py-2 px-2 mt-2 transition scale-105 bg-white dark:bg-black/50 dark:border-zinc-800 rounded-md shadow-xl right-[33rem]">
+                <div className="absolute left-0 z-20 w-40 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg dark:bg-black/50 dark:border-zinc-800">
                   {
                     links.map((link, index) => {
                       return (
@@ -56,7 +56,7 @@ export const DropDownProfile = () => {
                           key={index}
                           to={link.to}
                           onClick={closeDrop}
-                          className="flex gap-1.5 items-center px-4 py-2 text-sm font-semibold rounded text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-slate-800 hover:text-neutral-900 dark:hover:text-neutral-100"
+                          className="flex cursor-default gap-1.5 items-center px-4 py-2 text-sm font-semibold rounded text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-slate-800 hover:text-neutral-900 dark:hover:text-neutral-100"
                         >
                           {link.icon}{link.name}
                         </Link>
