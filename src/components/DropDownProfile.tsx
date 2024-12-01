@@ -23,7 +23,7 @@ export const DropDownProfile = () => {
 
   const links = [
     { icon: <TiHomeOutline />, name: "Home", to: "/" },
-    {  icon: <MdOutlineDashboard />, name: "Dashboard", to: "/dashboard" },
+    { icon: <MdOutlineDashboard />, name: "Dashboard", to: "/dashboard" },
     { icon: <IoSettingsOutline />, name: "Settings", to: "/dashboard/settings" },
     { icon: <IoMdLogOut />, name: "Sign out", to: "/signout" }
   ]
@@ -31,8 +31,8 @@ export const DropDownProfile = () => {
   return (
     <>
       {
-        isAuthenticated ? (
-          <div className="relative">
+        !isAuthenticated ? (
+          <div className="relative flex">
             <button onClick={openDrop}>
               <img
                 className="relative z-10 rounded-full size-8"
@@ -48,7 +48,7 @@ export const DropDownProfile = () => {
 
             {
               isDropOpen && (
-                <div className="absolute left-0 z-20 w-40 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg dark:bg-black/50 dark:border-zinc-800">
+                <div className="absolute left-0 z-20 w-40 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-8 dark:bg-black/50 dark:border-zinc-800">
                   {
                     links.map((link, index) => {
                       return (

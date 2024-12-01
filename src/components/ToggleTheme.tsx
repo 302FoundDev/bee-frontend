@@ -14,8 +14,8 @@ export const ToggleTheme = () => {
     }
 
     useEffect(() => {
-        document.body.classList.remove("light", "dark")
-        document.body.classList.add(selectedTheme)
+        document.documentElement.classList.remove("light", "dark")
+        document.documentElement.classList.add(selectedTheme)
     }, [selectedTheme])
 
     return (
@@ -23,14 +23,14 @@ export const ToggleTheme = () => {
             <button
                 onClick={handleToggle}
                 className="flex items-center justify-center gap-1 size-7"
-                    aria-label={`Change theme ${selectedTheme === "light" ? "dark" : "light"}`}
+                aria-label={`Change theme ${selectedTheme === "light" ? "dark" : "light"}`}
             >
                 {selectedTheme === "light" ? (
-                     <GiSun className="size-5" />
+                    <GiSun className="size-5" />
                 )
-                : (
-                   <FaMoon className="size-5" />
-                )}
+                    : (
+                        <FaMoon className="size-5" />
+                    )}
             </button>
         </>
     )
