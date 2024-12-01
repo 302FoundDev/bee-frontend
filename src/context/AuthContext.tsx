@@ -1,12 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, ReactNode } from "react"
+import { createContext, useContext, useState, ReactNode, useEffect } from "react"
 
 interface AuthContextType {
   user: string | null;
   isAuthenticated: boolean | null;
   signin: (credentials: unknown) => Promise<void>;
   signup: (data: unknown) => Promise<void>;
+  signout: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null)
@@ -22,8 +22,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/auth'
-  const API_USER_URL = import.meta.env.VITE_API_USER_URL || 'http://localhost:5000/users'
+  const API_URL = 'http://localhost:5000/auth'
+  const API_USER_URL = 'http://localhost:5000/users'
 
   const signin = async (credentials: unknown) => {
     try {
@@ -50,7 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signup = async (data: unknown) => {
     try {
-      const response = await fetch(`${API_USER_URL}/signup`, {
+      const response = await fetch(`${API_USER_URL}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -71,8 +71,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  const signout = async () => {
+    try {
+      const response = await fetch(`${API_URL}/signout`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+      })
+
+      if (response.ok) {
+        setUser(null)
+        setIsAuthenticated(false)
+      } else {
+        throw new Error('Error signing out')
+      }
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch(`${API_USER_URL}/get-user-data`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include'
+        })
+
+        if (response.ok) {
+          const data = await response.json()
+          setUser(data.user)
+          setIsAuthenticated(true)
+        } else {
+          setIsAuthenticated(false)
+        }
+      } catch (error) {
+        console.error(error)
+        setIsAuthenticated(false)
+      }
+    }
+
+    checkAuth()
+  }, [])
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signin, signup, }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, signin, signup, signout }}>
       {children}
     </AuthContext.Provider>
   )
