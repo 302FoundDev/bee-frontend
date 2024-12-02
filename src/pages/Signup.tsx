@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react"
 import { Navigate } from "react-router-dom"
 import { Button } from "../components/ui/Button"
 import { useAuth } from "../context/AuthContext"
@@ -8,26 +7,18 @@ import { motion } from "framer-motion"
 
 
 export const Signup = () => {
-  const { isAuthenticated, signup, signin } = useAuth()
-  const [redirectToDashboard, setRedirectToDashboard] = useState(false)
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      setRedirectToDashboard(true)
-    }
-  }, [isAuthenticated])
+  const { isAuthenticated, signup } = useAuth()
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
 
     const fields = Object.fromEntries(new FormData(event.currentTarget))
-    const { name, email, password } = fields
+    const { full_name, email, password } = fields
 
-    await signup({ name, email, password })
-    await signin({ email, password })
+    await signup({ full_name, email, password })
   }
 
-  if (redirectToDashboard) {
+  if (isAuthenticated) {
     return <Navigate to="/dashboard" />
   }
 
@@ -60,7 +51,7 @@ export const Signup = () => {
                 </label>
                 <input
                   type="text"
-                  name="name"
+                  name="full_name"
                   id="name"
                   className="block w-full p-2 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Full name"

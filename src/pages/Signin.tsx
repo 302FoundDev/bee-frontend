@@ -1,16 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
-import { Link, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "../components/ui/Button"
 import { motion } from "framer-motion"
 
 export const Signin = () => {
   const { signin, isAuthenticated } = useAuth()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAuthenticated) <Navigate to="/dashboard" />
-  }, [isAuthenticated])
+    if (isAuthenticated) {
+      navigate('/dashboard')
+    }
+  }, [isAuthenticated, navigate])
+
+  console.log(isAuthenticated)
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
@@ -22,14 +26,12 @@ export const Signin = () => {
     }
 
     const { email, password } = fields
-
     await signin({ email, password })
   }
 
   return (
     <section>
       <motion.div
-
         className="flex flex-col items-center justify-center px-6 mx-auto mt-8 lg:mt-24 md:mt-24"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +42,6 @@ export const Signin = () => {
           className="flex items-center mb-6 text-3xl font-semibold text-gray-900 transition ease-linear hover:opacity-70 dark:text-white"
         >
           <img className="size-12" src="/bee.svg" alt="logo" />
-          
         </Link>
         <div className="w-full bg-transparent border rounded-xl shadow lg:w-[600px] md:w-[600px] border-neutral-200 dark:border-neutral-800">
           <div className="p-4 space-y-4 lg:p-8 md:space-y-6">

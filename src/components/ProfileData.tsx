@@ -95,7 +95,7 @@ export default function UserProfileUpdate() {
           </div>
         </div>
 
-        <div className="px-5 py-5 border rounded-md shadow bg-neutral-100 border-zinc-300 dark:border-neutral-800 dark:bg-transparent">
+        <div className="flex px-5 py-5 border rounded-md shadow bg-neutral-100 border-zinc-300 dark:border-neutral-800 dark:bg-transparent lg:mt-0 sm:mt-28">
           <div>
             <h2 className="text-3xl font-semibold">Account</h2>
             <p className="mt-3 text-sm text-gray-700 dark:text-gray-400">

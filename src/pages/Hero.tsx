@@ -2,8 +2,9 @@ import { FaSquareGithub } from "react-icons/fa6"
 import { motion } from "framer-motion"
 
 export const Hero = () => {
+
   return (
-    <section className="px-8">
+    <section className="px-8 text-white">
       <motion.div
         className="flex justify-center mt-16 md:mb-7 lg:mt-40 md:mt-32"
         initial={{ opacity: 0, y: 30 }}
