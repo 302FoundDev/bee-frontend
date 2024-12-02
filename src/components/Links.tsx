@@ -10,7 +10,10 @@ export const Links = () => {
     <main className="mx-auto text-black max-w-screen-2xl dark:text-white">
       {
         isLoading ? (
-          <Loading />
+          <>
+            <Loading />
+            <p className="mt-2">Loading...</p>
+          </>
         ) : (
           <motion.div
             className="flex flex-col gap-6 mt-8"
@@ -19,8 +22,8 @@ export const Links = () => {
             transition={{ duration: 0.4, ease: "linear" }}
           >
             <div>
-              <h1 className="text-3xl font-semibold text-center">
-                Welcome back, <span className="bg-clip-text bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600">{user?.full_name}</span>!
+              <h1 className="text-2xl font-semibold text-center">
+                Welcome back, <span className="bg-clip-text bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600">user</span>!
               </h1>
             </div>
             <div className="flex flex-col items-center mt-16">

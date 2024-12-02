@@ -1,6 +1,6 @@
 export const createSlug = async (originalUrl: string, slug: string, description: string) => {
   try {
-    const response = await fetch('http://localhost:5000/urls/create-slug', {
+    const response = await fetch('http://localhost:9000/urls/create-slug', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
