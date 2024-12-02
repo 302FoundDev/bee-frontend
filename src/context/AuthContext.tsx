@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 interface AuthContextType {
   user: string | null;
   isAuthenticated: boolean | null;
+  isLoading: boolean;
   signin: (credentials: unknown) => Promise<void>;
   signup: (data: unknown) => Promise<void>;
   signout: () => Promise<void>;
@@ -20,7 +21,8 @@ export const useAuth = () => {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(true)  // null initially to handle loading state
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const navigate = useNavigate()
 
@@ -46,6 +48,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } catch (error) {
         console.error(error)
         setIsAuthenticated(false)
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -107,7 +111,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!response.ok) {
         throw new Error('Error signing out')
       }
-
       setUser(null)
       setIsAuthenticated(false)
       navigate('/signin')
@@ -119,7 +122,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signin, signup, signout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, signin, signup, signout, isLoading }}>
       {children}
     </AuthContext.Provider>
   )
