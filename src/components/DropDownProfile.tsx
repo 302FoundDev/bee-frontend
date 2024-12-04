@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TiHomeOutline } from "react-icons/ti";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -9,10 +9,18 @@ import { IoMdLogOut } from "react-icons/io";
 import Loading from "./Loading";
 
 
-
 export const DropDownProfile = () => {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, signout } = useAuth();
   const [isDropOpen, setIsDropOpen] = useState(false)
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeDrop()
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
   const openDrop = () => {
     setIsDropOpen(!isDropOpen)
@@ -26,8 +34,16 @@ export const DropDownProfile = () => {
     { icon: <TiHomeOutline />, name: "Home", to: "/" },
     { icon: <MdOutlineDashboard />, name: "Dashboard", to: "/dashboard" },
     { icon: <IoSettingsOutline />, name: "Settings", to: "/dashboard/settings" },
-    { icon: <IoMdLogOut />, name: "Sign out", to: "/signout" }
   ]
+
+  const handleSignOut = async () => {
+    try {
+      await signout();
+    } catch (error) {
+      console.error("Error while signing out:", error);
+    }
+  };
+
 
   return (
     <>
@@ -44,11 +60,7 @@ export const DropDownProfile = () => {
                 />
               </button>
 
-              {
-                isDropOpen && (
-                  <div onClick={closeDrop} className="fixed inset-0 z-0"></div>
-                )
-              }
+              {isDropOpen && (<div onClick={closeDrop} className="fixed inset-0 z-0"></div>)}
 
               {
                 isDropOpen && (
@@ -67,6 +79,9 @@ export const DropDownProfile = () => {
                         )
                       })
                     }
+
+                    <button onClick={handleSignOut} className="flex w-full cursor-default gap-1.5 items-center px-4 py-2 text-sm font-semibold rounded text-neutral-900 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-slate-800 hover:text-neutral-900 dark:hover:text-neutral-100" type="button"><IoMdLogOut /> Sign out</button>
+
                   </div>
                 )
               }

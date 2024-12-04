@@ -1,4 +1,4 @@
-import { Modal } from "../components/CreateLinkModal"
+import { CreateSlugModal } from "../components/CreateLinkModal"
 import { motion } from "framer-motion"
 import { useAuth } from "../context/AuthContext"
 import Loading from "./Loading"
@@ -31,7 +31,7 @@ export const Links = () => {
 
             {
               user ? (
-                <Modal />
+                <CreateSlugModal />
               ) : (
                 <div className="flex flex-col items-center mt-16">
                   <div>
@@ -44,7 +44,7 @@ export const Links = () => {
                   </div>
 
                   <div>
-                    <Modal />
+                    <CreateSlugModal />
                   </div>
                 </div>
               )

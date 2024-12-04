@@ -5,7 +5,7 @@ import { MdRocketLaunch } from "react-icons/md"
 import { motion } from "framer-motion"
 import { createSlug } from "../services/api"
 
-export const Modal = () => {
+export const CreateSlugModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
