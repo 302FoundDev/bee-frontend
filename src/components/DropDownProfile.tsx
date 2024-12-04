@@ -33,9 +33,7 @@ export const DropDownProfile = () => {
     <>
       {
         isLoading ? (
-          <>
-            <Loading />
-          </>
+          <Loading />
         ) : (
           isAuthenticated ? (
             <div className="relative flex">
@@ -54,7 +52,7 @@ export const DropDownProfile = () => {
 
               {
                 isDropOpen && (
-                  <div className="absolute left-0 z-20 w-40 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-8 dark:bg-black/50 dark:border-zinc-800">
+                  <div className="absolute right-0 z-20 w-40 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-[85%] left-2/2 dark:bg-black/50 dark:border-zinc-800">
                     {
                       links.map((link, index) => {
                         return (

@@ -27,7 +27,7 @@ export const Modal = () => {
     const form = event.currentTarget as HTMLFormElement
     const formData = new FormData(form)
 
-    const originalUrl = formData.get('originalUrl') as string
+    const url = formData.get('url') as string
     const slug = formData.get('slug') as string
     const description = formData.get('description') as string
 
@@ -36,12 +36,16 @@ export const Modal = () => {
     setSuccess(null)
 
     try {
-      const response = await createSlug(originalUrl, slug, description)
+      const response = await createSlug(url, slug, description)
       setSuccess("Link created successfully!")
-      console.log(response)
+
+      setTimeout(() => {
+        closeModal()
+      }, 2000)
+
+      return response
     } catch (error: any) {
       setError("Failed to create slug. Please try again.")
-      console.error(error)
     } finally {
       setLoading(false)
     }
@@ -92,7 +96,7 @@ export const Modal = () => {
             <label className="flex flex-col mb-6 text-[15px] text-black dark:text-gray-200">
               Destination URL:
               <input
-                name="originalUrl"
+                name="url"
                 type="text"
                 placeholder="https://example.com"
                 className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"

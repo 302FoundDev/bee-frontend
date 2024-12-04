@@ -26,20 +26,29 @@ export const Links = () => {
                 Welcome back, <span className="bg-clip-text bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600">user</span>!
               </h1>
             </div>
-            <div className="flex flex-col items-center mt-16">
-              <div>
-                <img
-                  src="/empty-box.svg"
-                  className="mx-auto size-14"
-                  alt="empty box"
-                />
-                <p className="mt-2 mb-4 opacity-50">No links shortened, yet...</p>
-              </div>
 
-              <div>
+            // fix the ternary operator
+
+            {
+              user ? (
                 <Modal />
-              </div>
-            </div>
+              ) : (
+                <div className="flex flex-col items-center mt-16">
+                  <div>
+                    <img
+                      src="/empty-box.svg"
+                      className="mx-auto size-14"
+                      alt="empty box"
+                    />
+                    <p className="mt-2 mb-4 opacity-50">No links shortened, yet...</p>
+                  </div>
+
+                  <div>
+                    <Modal />
+                  </div>
+                </div>
+              )
+            }
 
           </motion.div>
         )
@@ -47,3 +56,4 @@ export const Links = () => {
     </main>
   )
 }
+

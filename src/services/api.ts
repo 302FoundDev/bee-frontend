@@ -1,4 +1,4 @@
-export const createSlug = async (originalUrl: string, slug: string, description: string) => {
+export const createSlug = async (url: string, slug: string, description: string) => {
   try {
     const response = await fetch('http://localhost:9000/urls/create-slug', {
       method: 'POST',
@@ -6,7 +6,7 @@ export const createSlug = async (originalUrl: string, slug: string, description:
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify({ originalUrl, slug, description })
+      body: JSON.stringify({ url, slug, description })
     })
 
     if (!response.ok) {
