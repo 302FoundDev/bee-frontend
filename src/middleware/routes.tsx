@@ -11,5 +11,5 @@ export const ProtectedRoute = () => {
 export const ProtectedAuthRoute = () => {
   const { isAuthenticated } = useAuth()
 
-  return isAuthenticated ? <Navigate to='/dashboard' /> : <Outlet />
+  return isAuthenticated ? <Navigate to="/dashboard" state={{ message: 'You are already logged in!' }} /> : <Outlet />
 }

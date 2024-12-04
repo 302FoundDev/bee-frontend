@@ -4,7 +4,7 @@ type ButtonProps = {
   children: React.ReactNode
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
-  variant?: 'primary' | 'secondary' | 'danger' | 'outlined' | 'exotic' | 'transparent' | 'neutral900' | 'gradient'
+  variant?: 'primary' | 'secondary' | 'danger' | 'outlined' | 'exotic' | 'transparent' | 'neutral900' | 'gradient' | 'base'
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   className?: string
   disabled?: boolean
@@ -31,7 +31,8 @@ export const Button = ({
     exotic: 'bg-indigo-700 hover:bg-indigo-800',
     transparent: 'bg-transparent border border-zinc-500 hover:bg-neutral-800',
     neutral900: 'bg-neutral-900 border border-zinc-500 hover:bg-neutral-800',
-    gradient: 'from-indigo-600 via-pink-600 to-purple-600 bg-gradient-to-r'
+    gradient: 'from-indigo-600 via-pink-600 to-purple-600 bg-gradient-to-r',
+    base: 'rounded-md px-4 py-2',
   }
 
   const sizeVariants = {

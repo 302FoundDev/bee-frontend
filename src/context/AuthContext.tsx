@@ -3,7 +3,7 @@ import { createContext, useContext, useState, ReactNode, useEffect } from "react
 import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
-  user: string | null;
+  user: { id: number, email: string, full_name: string } | null;
   isAuthenticated: boolean | null;
   isLoading: boolean;
   signin: (credentials: unknown) => Promise<void>;
@@ -21,7 +21,7 @@ export const useAuth = () => {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(true)
   const [isLoading, setIsLoading] = useState(true)
 
   const navigate = useNavigate()
@@ -39,8 +39,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         })
 
         if (response.ok) {
-          const user = await response.json()
-          setUser(user.data)
+          const userData = await response.json()
+          setUser(userData.data)
 
           setIsAuthenticated(true)
         } else {
@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     checkAuth()
-  }, [])
+  }, [isAuthenticated])
 
   const signin = async (credentials: any) => {
     try {
@@ -67,9 +67,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       if (response.ok) {
-        const user = await response.json()
+        const userData = await response.json()
 
-        setUser(user.user)
+        setUser(userData.data)
         setIsAuthenticated(true)
 
         navigate('/dashboard')

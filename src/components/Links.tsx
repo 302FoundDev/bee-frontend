@@ -16,14 +16,14 @@ export const Links = () => {
           </>
         ) : (
           <motion.div
-            className="flex flex-col gap-6 mt-8"
+            className="flex flex-col w-full gap-6 mt-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "linear" }}
           >
-            <div>
-              <h1 className="text-2xl font-semibold text-center">
-                Welcome back, <span className="bg-clip-text bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600">user</span>!
+            <div className="flex items-start justify-start w-full">
+              <h1 className="text-2xl font-semibold">
+                Welcome back, <span className="bg-clip-text bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600">{user?.full_name}</span> !
               </h1>
             </div>
 

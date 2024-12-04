@@ -7,7 +7,7 @@ import { Footer } from "./components/Footer"
 import { NotFound } from "./pages/404/NotFound"
 import { DashboardLayout } from "./dashboard/DashboardLayout"
 import { Links } from "./components/Links"
-import UserProfileUpdate from "./components/ProfileData"
+import { UserProfileUpdate } from "./components/ProfileData"
 import { ProtectedRoute, ProtectedAuthRoute } from "./middleware/routes"
 
 const App = () => {
@@ -21,7 +21,6 @@ const App = () => {
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<Hero />} />
-
 
           <Route element={<ProtectedAuthRoute />}>
             <Route path="signin" element={<Signin />} />

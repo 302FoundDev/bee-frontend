@@ -2,12 +2,39 @@
 import { IoSaveOutline } from "react-icons/io5"
 import { Button } from "./ui/Button"
 import { motion } from "framer-motion"
+import { deleteUser } from "../services/api"
+import { useAuth } from "../context/AuthContext"
+import { useState } from "react"
+import { ConfirmingDeleteModal } from "./ConfirmingDeleteModal"
 
-export default function UserProfileUpdate() {
+export const UserProfileUpdate = () => {
+  const { user } = useAuth()
+
+  const [isConfirmingDelete, setIsConfirmingDelete] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const handleSubmit = (event: any) => {
     event.preventDefault()
 
     alert("Profile update successfully")
+  }
+
+  const handleDelete = async () => {
+
+    setIsDeleting(true)
+
+    try {
+      await deleteUser()
+      alert("Account deleted successfully.")
+    }
+
+    catch (error) {
+      console.error(`Error deleting user: ${error}`)
+    } finally {
+      setIsDeleting(false)
+      setIsConfirmingDelete(false)
+    }
+
   }
 
   return (
@@ -83,9 +110,8 @@ export default function UserProfileUpdate() {
               </div>
               <div className="mt-8">
                 <Button
-                  variant="secondary"
                   type="submit"
-                  className="inline-flex items-center justify-center gap-1 w-full text-[15px] px-2 py-2 text-white rounded-md transition ease-in-out md:w-48 lg:w-48"
+                  className={`px-4 py-2 text-sm font-medium text-white flex items-center gap-2 bg-red-500 rounded-md dark:bg-red-600 ${isDeleting ? "opacity-50 cursor-not-allowed" : "hover:bg-red-600"}`}
                 >
                   <IoSaveOutline />
                   Save
@@ -106,14 +132,24 @@ export default function UserProfileUpdate() {
           <div className="w-full gap-2 mt-8">
             <h4>Delete account:</h4>
             <Button
-              className="inline-flex items-center justify-center w-full gap-2 py-2 mx-0 mt-2 text-white rounded-md md:w-48 lg:w-48"
-              variant="danger"
+              variant="base"
+              onClick={() => setIsConfirmingDelete(true)}
+              className="inline-flex items-center justify-center w-full gap-2 py-2 mx-0 mt-2 text-white bg-red-500 rounded-md hover:bg-red-600 md:w-48 lg:w-48"
             >
-              🗑️ Delete account
+              Delete account
             </Button>
           </div>
         </div>
       </div>
+
+      <ConfirmingDeleteModal
+        isDeleting={isDeleting}
+        isOpen={isConfirmingDelete}
+        onClose={() => setIsConfirmingDelete(false)}
+        handleDelete={handleDelete}
+      />
+
     </motion.div>
   )
 }
+
