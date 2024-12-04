@@ -1,20 +1,10 @@
-import { useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Button } from "../components/ui/Button"
 import { motion } from "framer-motion"
 
 export const Signin = () => {
-  const { signin, isAuthenticated } = useAuth()
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/dashboard')
-    }
-  }, [isAuthenticated, navigate])
-
-  console.log(isAuthenticated)
+  const { signin } = useAuth()
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
