@@ -1,4 +1,4 @@
-import { FaSquareGithub } from "react-icons/fa6"
+import { FaGithubAlt } from "react-icons/fa";
 import { DropDownProfile } from "./DropDownProfile"
 import { ToggleTheme } from "./ToggleTheme"
 import { Link } from "react-router-dom"
@@ -27,7 +27,7 @@ export const Header = () => {
                 href="https://github.com/LaCocinaDePapa/beely"
               >
                 <span className="flex items-center gap-2">
-                  <FaSquareGithub className="flex size-6" />
+                  <FaGithubAlt className="flex size-5" />
                 </span>
               </a>
             </li>

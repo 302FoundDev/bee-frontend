@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { FaArrowRight } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TiHomeOutline } from "react-icons/ti";
@@ -89,10 +88,9 @@ export const DropDownProfile = () => {
           ) : (
             <Link
               to="signin"
-              className="flex items-center gap-2 px-6 py-1.5 font-semibold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-full"
+              className="flex items-center gap-2 text-sm px-4 py-1.5 font-semibold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-lg"
             >
               Get started
-              <FaArrowRight className="w-3" />
             </Link>
           )
         )

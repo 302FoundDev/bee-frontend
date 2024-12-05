@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { GiSun } from "react-icons/gi"
-import { FaMoon } from "react-icons/fa"
+import { LuSun } from "react-icons/lu";
+import { FaRegMoon } from "react-icons/fa";
 
 export const ToggleTheme = () => {
     const savedTheme =
@@ -24,14 +24,14 @@ export const ToggleTheme = () => {
         <>
             <button
                 onClick={handleToggle}
-                className="flex items-center justify-center gap-1 size-7"
+                className="flex items-center justify-center gap-1 p-1.5 transition-all duration-200 ease-in-out rounded-full hover:bg-zinc-800"
                 aria-label={`Change theme ${selectedTheme === "light" ? "dark" : "light"}`}
             >
                 {selectedTheme === "light" ? (
-                    <GiSun className="size-5" />
+                    <LuSun className="size-4" />
                 )
                     : (
-                        <FaMoon className="size-5" />
+                        <FaRegMoon className="size-4" />
                     )}
             </button>
         </>

@@ -32,7 +32,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-
         const response = await fetch(`${API_USER_URL}/profile`, {
           method: 'GET',
           credentials: 'include'
@@ -46,10 +45,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         } else {
           setIsAuthenticated(false)
         }
-      } catch (error) {
+      }
+
+      catch (error) {
         console.error(error)
         setIsAuthenticated(false)
-      } finally {
+      }
+
+      finally {
         setIsLoading(false)
       }
     }
@@ -66,15 +69,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         credentials: 'include'
       })
 
-      if (response.ok) {
-        const userData = await response.json()
+      const userData = await response.json()
 
+      if (response.ok) {
         setUser(userData.data)
         setIsAuthenticated(true)
 
         navigate('/dashboard')
       } else {
-        throw new Error('Error signing in')
+        throw new Error(userData.message)
       }
     } catch (error) {
       console.error(error)
