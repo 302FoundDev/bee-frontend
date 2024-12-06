@@ -38,14 +38,14 @@ export const Signup = () => {
         </Link>
         <div className="w-full lg:w-[600px] md:w-[600px] bg-transparent border rounded-xl shadow border-neutral-200 dark:border-neutral-800">
           <div className="p-4 space-y-4 lg:p-8 md:space-y-6">
-            <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 lg:text-3xl dark:text-white">
+            <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
               Create an account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Full name
                 </label>
@@ -53,7 +53,7 @@ export const Signup = () => {
                   type="text"
                   name="full_name"
                   id="name"
-                  className="block w-full p-2 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full px-3 py-1.5 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Full name"
                   required
                 />
@@ -61,7 +61,7 @@ export const Signup = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your email
                 </label>
@@ -69,7 +69,7 @@ export const Signup = () => {
                   type="email"
                   name="email"
                   id="email"
-                  className="block w-full p-2 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full px-3 py-1.5 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
                   required
                 />
@@ -77,7 +77,7 @@ export const Signup = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
                 </label>
@@ -86,14 +86,14 @@ export const Signup = () => {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="block w-full p-2 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full px-3 py-1.5 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
               <div>
                 <label
                   htmlFor="confirmPassword"
-                  className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Confirm password
                 </label>
@@ -102,29 +102,38 @@ export const Signup = () => {
                   name="confirmPassword"
                   id="confirmPassword"
                   placeholder="••••••••"
-                  className="block w-full p-2 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full px-3 py-1.5 text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
               <div>
-                <label
-                  htmlFor="terms"
-                  className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
-                >
-                  I agree to the{" "}
-                  <a
-                    href="/terms"
-                    className="font-medium text-blue-500 hover:underline"
+                <div>
+                  <input type="checkbox"
+                    id="terms"
+                    name="terms"
+                    className="w-4 border border-gray-300 rounded h-14 bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="terms"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Terms and Conditions
-                  </a>
-                </label>
+                    I agree to the{" "}
+                    <a
+                      href="/terms"
+                      className="font-medium text-blue-500 hover:underline"
+                    >
+                      Terms and Conditions
+                    </a>
+                  </label>
+                </div>
               </div>
-              <Button variant="gradient" type="submit" className="w-full py-2 text-lg rounded-full">
+              <Button variant="gradient" type="submit" className="w-full py-2 text-base rounded-full">
                 Create your account
               </Button>
 
-              <p className="text-base font-light text-gray-500 dark:text-gray-400">
+              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
                 <Link
                   to="/signin"
