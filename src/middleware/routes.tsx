@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext'
 export const ProtectedRoute = () => {
   const { isAuthenticated } = useAuth()
 
-  return isAuthenticated ? <Outlet /> : <Navigate to='/signin' />
+  return !isAuthenticated ? window.location.href = '/signin' : <Outlet />
 }
 
 export const ProtectedAuthRoute = () => {

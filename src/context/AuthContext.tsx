@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, ReactNode, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
   user: { id: number, email: string, full_name: string } | null;
@@ -24,7 +23,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  const navigate = useNavigate()
 
   const API_URL = 'http://localhost:9000/auth'
   const API_USER_URL = 'http://localhost:9000/users'
@@ -61,7 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     checkAuth()
   }, [isAuthenticated])
 
-  const signin = async (credentials: any) => {
+  const signin = async (credentials: any, callbackUrl = '/dashboard') => {
     try {
       const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
@@ -76,7 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(userData.data)
         setIsAuthenticated(true)
 
-        // navigate('/dashboard')
+        window.location.href = callbackUrl
       } else {
         throw new Error(userData.message)
       }
@@ -86,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const signup = async (credentials: any) => {
+  const signup = async (credentials: any, callbackUrl = '/dashboard') => {
     try {
       const response = await fetch(`${API_USER_URL}/register`, {
         method: 'POST',
@@ -96,7 +94,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       if (response.ok) {
-        navigate('/signin')
+        const userData = await response.json()
+        setUser(userData.data)
+        setIsAuthenticated(true)
+
+        window.location.href = callbackUrl
       } else {
         setIsAuthenticated(false)
       }
@@ -106,7 +108,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const signout = async () => {
+  const signout = async (callbackUrl = '/') => {
     try {
       const response = await fetch(`${API_URL}/logout`, {
         method: 'POST',
@@ -117,9 +119,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         throw new Error('Error signing out')
       }
       setUser(null)
-      setIsAuthenticated(false)
-      navigate('/signin')
+      setIsAuthenticated(null)
 
+      window.location.href = callbackUrl
     } catch (error) {
       console.error(error)
       throw error

@@ -18,9 +18,6 @@ export const Signin = () => {
 
     try {
       await signin(fields)
-
-      // Redirect to home
-      window.location.href = '/signin'
     }
 
     catch (error) {

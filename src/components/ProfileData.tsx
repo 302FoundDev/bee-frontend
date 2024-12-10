@@ -25,7 +25,7 @@ export const UserProfileUpdate = () => {
 
     try {
       await deleteUser()
-      alert("Account deleted successfully.")
+      window.location.href = '/signin'
     }
 
     catch (error) {
