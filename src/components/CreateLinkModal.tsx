@@ -24,8 +24,6 @@ export const CreateSlugModal = () => {
 
   const closeModal = () => {
     setIsModalOpen(false)
-    setError(null)
-    setSuccess(null)
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,21 +44,22 @@ export const CreateSlugModal = () => {
       const response = await createSlug(url, slug, description)
       setSuccess("Link created successfully!")
       setShowConfetti(true)
-
-      setTimeout(() => {
-        closeModal()
-      }, 3000)
-
       return response
-    } catch (error: any) {
+    }
+
+    catch (error) {
       setError("Failed to create slug. Please try again.")
-    } finally {
+    }
+
+    finally {
       setLoading(false)
+      setShowConfetti(false)
     }
   }
 
   return (
     <section className="flex flex-col items-center">
+
       <Button
         className="w-48 inline-flex items-center gap-1.5 border-neutral-300 dark:border-neutral-800"
         variant="secondary"

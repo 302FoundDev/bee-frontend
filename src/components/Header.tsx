@@ -1,4 +1,5 @@
 import { FaGithubAlt } from "react-icons/fa";
+import { LiaBugSolid } from "react-icons/lia";
 import { DropDownProfile } from "./DropDownProfile"
 import { ToggleTheme } from "./ToggleTheme"
 import { Link } from "react-router-dom"
@@ -20,6 +21,20 @@ export const Header = () => {
           </li>
 
           <div className="flex items-center gap-4">
+            <li className="mr-2">
+              <a
+                className="transition ease-in-out hover:opacity-80"
+                href="https://github.com/302FoundDev/bee-frontend/issues/new"
+                target="_blank"
+                rel="noopener"
+              >
+                <span className="flex items-center gap-1">
+                  <LiaBugSolid className="size-5" />
+                  Bugs
+                </span>
+              </a>
+            </li>
+
             <li>
               <a
                 className="transition ease-in-out hover:opacity-80"

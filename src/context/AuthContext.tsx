@@ -112,7 +112,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const signout = async (callbackUrl = '/') => {
+  const signout = async () => {
     try {
       const response = await fetch(`${API_URL}/logout`, {
         method: 'POST',
@@ -124,7 +124,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       setUser(null)
       setIsAuthenticated(null)
-      window.location.replace(callbackUrl)
+      window.location.origin
     }
     catch (error) {
       console.error(error)
