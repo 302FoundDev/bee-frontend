@@ -2,7 +2,9 @@ import { LoaderIcon } from "lucide-react"
 
 const Loading = () => {
   return (
-    <div className="flex flex-col items-center w-full duration-100 mt-14 text-neutral-500 animate-in fade-in-20 dark:text-neutral-400">
+    <div style={{
+      margin: 'auto'
+    }} className="justify-center w-full duration-100 flexitems-center mt-14 text-neutral-500 animate-in fade-in-20 dark:text-neutral-400">
       <LoaderIcon size={20} className="animate-spin" />
     </div>
   )

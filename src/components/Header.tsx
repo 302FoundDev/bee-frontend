@@ -22,6 +22,7 @@ export const Header = () => {
           <div className="flex items-center gap-4">
             <li>
               <a
+                className="transition ease-in-out hover:opacity-80"
                 target="_blank"
                 rel="noopener"
                 href="https://github.com/LaCocinaDePapa/beely"

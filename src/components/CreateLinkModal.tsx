@@ -4,12 +4,19 @@ import { IoMdClose } from "react-icons/io"
 import { MdRocketLaunch } from "react-icons/md"
 import { motion } from "framer-motion"
 import { createSlug } from "../services/api"
+import Confetti from 'react-confetti-boom'
+
 
 export const CreateSlugModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  if (showConfetti) {
+    return <Confetti mode="fall" particleCount={50} colors={['#ff577f', '#ff884b']} />;
+  }
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -38,10 +45,11 @@ export const CreateSlugModal = () => {
     try {
       const response = await createSlug(url, slug, description)
       setSuccess("Link created successfully!")
+      setShowConfetti(true)
 
       setTimeout(() => {
         closeModal()
-      }, 2000)
+      }, 3000)
 
       return response
     } catch (error: any) {
@@ -59,7 +67,7 @@ export const CreateSlugModal = () => {
         onClick={openModal}
       >
         <img className="size-4" src="/plus.svg" alt="plus icon" />
-        Create new link
+        Create new slug
       </Button>
 
       {isModalOpen && (

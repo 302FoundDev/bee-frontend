@@ -27,27 +27,23 @@ export const Links = () => {
               </h1>
             </div>
 
-            // fix the ternary operator
-
             {
-              user ? (
-                <CreateSlugModal />
-              ) : (
-                <div className="flex flex-col items-center mt-16">
-                  <div>
-                    <img
-                      src="/empty-box.svg"
-                      className="mx-auto size-14"
-                      alt="empty box"
-                    />
-                    <p className="mt-2 mb-4 opacity-50">No links shortened, yet...</p>
-                  </div>
 
-                  <div>
-                    <CreateSlugModal />
-                  </div>
+              <div className="flex flex-col items-center mt-16">
+                <div>
+                  <img
+                    src="/empty-box.svg"
+                    className="mx-auto size-14"
+                    alt="empty box"
+                  />
+                  <p className="mt-2 mb-4 opacity-50">No links shortened, yet...</p>
                 </div>
-              )
+
+                <div>
+                  <CreateSlugModal />
+                </div>
+              </div>
+
             }
 
           </motion.div>

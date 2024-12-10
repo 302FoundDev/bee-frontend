@@ -10,13 +10,22 @@ export const Signin = () => {
     event.preventDefault()
 
     const formData = new FormData(event.target)
+
     const fields = {
       email: formData.get('email') as string,
       password: formData.get('password') as string
     }
 
-    const { email, password } = fields
-    await signin({ email, password })
+    try {
+      await signin(fields)
+
+      // Redirect to home
+      window.location.href = '/signin'
+    }
+
+    catch (error) {
+      console.error(error)
+    }
   }
 
   return (

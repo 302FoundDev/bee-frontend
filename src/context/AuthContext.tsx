@@ -21,7 +21,7 @@ export const useAuth = () => {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState(null)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(true)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   const navigate = useNavigate()
@@ -50,6 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       catch (error) {
         console.error(error)
         setIsAuthenticated(false)
+        setIsLoading(false)
       }
 
       finally {
@@ -75,7 +76,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(userData.data)
         setIsAuthenticated(true)
 
-        navigate('/dashboard')
+        // navigate('/dashboard')
       } else {
         throw new Error(userData.message)
       }
