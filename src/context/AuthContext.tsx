@@ -1,8 +1,18 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, ReactNode, useEffect } from "react"
 
+interface UserUrl {
+  id: number;
+  url: string;
+  slug: string;
+  description: string;
+  user_id: number;
+  created_at: string;
+  updated_at: string;
+}
+
 interface AuthContextType {
-  user: { id: number, email: string, full_name: string } | null;
+  user: { id: number, email: string, full_name: string, urls: UserUrl[] } | null;
   isAuthenticated: boolean | null;
   isLoading: boolean;
   signin: (credentials: unknown) => Promise<void>;
@@ -39,6 +49,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
         const data = await response.json()
         setUser(data.user)
+        // user?.urls.map((url: any) => {
+        //   console.log(url)
+        // })
         setIsAuthenticated(true)
       }
 
@@ -55,7 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     checkAuth()
-  }, [isAuthenticated])
+  }, [])
 
   const signin = async (credentials: any, callbackUrl = '/dashboard') => {
     try {

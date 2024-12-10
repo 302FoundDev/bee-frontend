@@ -6,6 +6,9 @@ import Loading from "./Loading"
 export const Links = () => {
   const { user, isLoading } = useAuth()
 
+  const createLink = 'Create link'
+  const createNewSlug = 'Create new slug'
+
   if (isLoading) {
     return (
       <>
@@ -31,13 +34,12 @@ export const Links = () => {
             </h1>
 
             <div>
-              <CreateSlugModal />
+              <CreateSlugModal children={createLink} />
             </div>
-
           </div>
 
           <div>
-            <div className="border rounded h-44 w-96">
+            <div className="px-4 py-2 border rounded h-28 w-96 border-zinc-800">
               {user?.email}
             </div>
           </div>
@@ -53,7 +55,7 @@ export const Links = () => {
             </div>
 
             <div>
-              <CreateSlugModal />
+              <CreateSlugModal children={createNewSlug} />
             </div>
           </div>
 

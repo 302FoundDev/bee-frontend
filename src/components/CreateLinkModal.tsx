@@ -5,9 +5,14 @@ import { MdRocketLaunch } from "react-icons/md"
 import { motion } from "framer-motion"
 import { createSlug } from "../services/api"
 import Confetti from 'react-confetti-boom'
+import { BsPlusCircleDotted } from "react-icons/bs";
 
 
-export const CreateSlugModal = () => {
+interface CreateSlugModalProps {
+  children: React.ReactNode;
+}
+
+export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -61,12 +66,13 @@ export const CreateSlugModal = () => {
     <section className="flex flex-col items-center">
 
       <Button
-        className="w-48 inline-flex items-center gap-1.5 border-neutral-300 dark:border-neutral-800"
-        variant="secondary"
+        className="w-full bg-transparent inline-flex items-center gap-1.5 bg-neutral-800 border-neutral-300 border-neutral-800"
+        variant="base"
+        size="md"
         onClick={openModal}
       >
-        <img className="size-4" src="/plus.svg" alt="plus icon" />
-        Create new slug
+        <BsPlusCircleDotted className="size-4" />
+        {children}
       </Button>
 
       {isModalOpen && (

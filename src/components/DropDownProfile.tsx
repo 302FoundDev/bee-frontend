@@ -60,9 +60,9 @@ export const DropDownProfile = () => {
 
           {
             isDropOpen && (
-              <div className="absolute right-0 z-20 w-60 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-[85%] left-2/2 dark:bg-black/50 dark:border-zinc-800">
-                <p className="flex items-center px-4 text-[15px]">{user?.full_name}</p>
-                <p className="flex items-center px-4 mb-4 text-sm opacity-75">{user?.email}</p>
+              <div className="absolute right-0 z-20 w-60 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-[85%] left-2/2 dark:bg-black/95 dark:border-zinc-800">
+                <p className="flex items-center px-4 text-[15px] text-neutral-900 font-semibold dark:text-neutral-100">{user?.full_name}</p>
+                <p className="flex items-center px-4 mb-4 text-sm opacity-75 text-neutral-900 dark:text-neutral-100">{user?.email}</p>
 
                 {
                   links.map((link, index) => {
