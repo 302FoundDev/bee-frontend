@@ -1,13 +1,7 @@
-
-import { ReactNode } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Outlet } from 'react-router-dom';
 
-interface ProtectedRouteProps {
-  children: ReactNode;
-}
-
-export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+export const ProtectedRoute = () => {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
@@ -19,6 +13,6 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return null;
   }
 
-  return children ? children : <Outlet />;
+  return <Outlet />;
 
 }

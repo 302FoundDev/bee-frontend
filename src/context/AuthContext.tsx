@@ -40,8 +40,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const data = await response.json()
         setUser(data.user)
         setIsAuthenticated(true)
-
-        console.log(data)
       }
 
       catch (error) {

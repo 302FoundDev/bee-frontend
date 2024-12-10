@@ -9,7 +9,7 @@ import Loading from "./Loading";
 
 
 export const DropDownProfile = () => {
-  const { isAuthenticated, isLoading, signout } = useAuth();
+  const { isAuthenticated, isLoading, signout, user } = useAuth();
   const [isDropOpen, setIsDropOpen] = useState(false)
 
   useEffect(() => {
@@ -60,7 +60,10 @@ export const DropDownProfile = () => {
 
           {
             isDropOpen && (
-              <div className="absolute right-0 z-20 w-40 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-[85%] left-2/2 dark:bg-black/50 dark:border-zinc-800">
+              <div className="absolute right-0 z-20 w-60 px-2 py-2 mt-2 transition-all ease-in-out bg-white rounded-md shadow-lg top-[85%] left-2/2 dark:bg-black/50 dark:border-zinc-800">
+                <p className="flex items-center px-4 text-[15px]">{user?.full_name}</p>
+                <p className="flex items-center px-4 mb-4 text-sm opacity-75">{user?.email}</p>
+
                 {
                   links.map((link, index) => {
                     return (

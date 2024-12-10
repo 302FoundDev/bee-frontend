@@ -26,7 +26,7 @@ const App = () => {
           <Route path="signup" element={<Signup />} />
 
           {/* Protected routes with shared layout */}
-          <Route element={<ProtectedRoute children={undefined} />}>
+          <Route element={<ProtectedRoute />}>
             <Route path="dashboard" element={<DashboardLayout />}>
               <Route index element={<Links />} />
               <Route path="settings" element={<UserProfileUpdate />} />
