@@ -1,15 +1,24 @@
-import { Navigate, Outlet } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
 
+import { ReactNode } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { Outlet } from 'react-router-dom';
 
-export const ProtectedRoute = () => {
-  const { isAuthenticated } = useAuth()
-
-  return !isAuthenticated ? window.location.href = '/signin' : <Outlet />
+interface ProtectedRouteProps {
+  children: ReactNode;
 }
 
-export const ProtectedAuthRoute = () => {
-  const { isAuthenticated } = useAuth()
+export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+  const { isAuthenticated, isLoading } = useAuth();
 
-  return isAuthenticated ? <Navigate to="/dashboard" state={{ message: 'You are already logged in!' }} /> : <Outlet />
+  if (isLoading) {
+    return null;
+  }
+
+  if (!isAuthenticated) {
+    window.location.replace('/signin')
+    return null;
+  }
+
+  return children ? children : <Outlet />;
+
 }

@@ -23,7 +23,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-
   const API_URL = 'http://localhost:9000/auth'
   const API_USER_URL = 'http://localhost:9000/users'
 
@@ -35,19 +34,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           credentials: 'include'
         })
 
-        if (response.ok) {
-          const userData = await response.json()
-          setUser(userData.data)
-
-          setIsAuthenticated(true)
-        } else {
-          setIsAuthenticated(false)
+        if (!response.ok) {
+          throw new Error('Not authenticated')
         }
+        const data = await response.json()
+        setUser(data.user)
+        setIsAuthenticated(true)
+
+        console.log(data)
       }
 
       catch (error) {
         console.error(error)
-        setIsAuthenticated(false)
+        setIsAuthenticated(null)
+        setUser(null)
         setIsLoading(false)
       }
 
@@ -68,17 +68,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         credentials: 'include'
       })
 
-      const userData = await response.json()
+      const data = await response.json()
 
       if (response.ok) {
-        setUser(userData.data)
+        setUser(data.data)
         setIsAuthenticated(true)
-
-        window.location.href = callbackUrl
-      } else {
-        throw new Error(userData.message)
+        window.location.replace(callbackUrl)
       }
-    } catch (error) {
+
+      else {
+        throw new Error(data.message)
+      }
+
+    }
+    catch (error) {
       console.error(error)
       throw error
     }
@@ -94,15 +97,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       if (response.ok) {
-        const userData = await response.json()
-        setUser(userData.data)
+        const data = await response.json()
+        setUser(data.data)
         setIsAuthenticated(true)
-
-        window.location.href = callbackUrl
-      } else {
-        setIsAuthenticated(false)
+        window.location.replace(callbackUrl)
       }
-    } catch (error) {
+
+      else {
+        setIsAuthenticated(null)
+      }
+
+    }
+    catch (error) {
       console.error(error)
       throw error
     }
@@ -120,9 +126,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       setUser(null)
       setIsAuthenticated(null)
-
-      window.location.href = callbackUrl
-    } catch (error) {
+      window.location.replace(callbackUrl)
+    }
+    catch (error) {
       console.error(error)
       throw error
     }

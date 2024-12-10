@@ -8,7 +8,7 @@ import { NotFound } from "./pages/404/NotFound"
 import { DashboardLayout } from "./dashboard/DashboardLayout"
 import { Links } from "./components/Links"
 import { UserProfileUpdate } from "./components/ProfileData"
-import { ProtectedRoute, ProtectedAuthRoute } from "./middleware/routes"
+import { ProtectedRoute } from "./middleware/routes"
 
 const App = () => {
   return (
@@ -22,13 +22,11 @@ const App = () => {
           {/* Public routes */}
           <Route path="/" element={<Hero />} />
 
-          <Route element={<ProtectedAuthRoute />}>
-            <Route path="signin" element={<Signin />} />
-            <Route path="signup" element={<Signup />} />
-          </Route>
+          <Route path="signin" element={<Signin />} />
+          <Route path="signup" element={<Signup />} />
 
           {/* Protected routes with shared layout */}
-          <Route element={<ProtectedRoute />}>
+          <Route element={<ProtectedRoute children={undefined} />}>
             <Route path="dashboard" element={<DashboardLayout />}>
               <Route index element={<Links />} />
               <Route path="settings" element={<UserProfileUpdate />} />
