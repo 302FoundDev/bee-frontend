@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 export const Header = () => {
 
   return (
-    <header className="text-white border-b bg-neutral-900 border-zinc-800">
+    <header className="text-white border-b bg-neutral-900 border-zinc-300 dark:border-zinc-800">
       <nav className="h-16 px-4 m-auto max-w-screen-2xl">
         <ul className="flex items-center justify-between h-full">
           <li>

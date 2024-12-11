@@ -2,7 +2,9 @@ import { CreateSlugModal } from "../components/CreateLinkModal"
 import { motion } from "framer-motion"
 import { useAuth } from "../context/AuthContext"
 import Loading from "./Loading"
-import { Users } from "lucide-react"
+import { IoMdClose } from "react-icons/io"
+import { FiCopy } from "react-icons/fi";
+
 
 export const Links = () => {
   const { user, isLoading } = useAuth()
@@ -58,11 +60,16 @@ export const Links = () => {
             ) : (
               <div className="grid items-center grid-cols-3 gap-3">
                 {user?.urls.map((url) => (
-                  <li key={url.id} className="flex flex-col justify-between w-full gap-2 px-4 py-4 border rounded-lg h-22 border-zinc-800">
+                  <li key={url.id} className="flex flex-col justify-between w-full gap-2 px-4 py-4 border rounded-lg shadow-sm h-22 border-zinc-300 dark:border-zinc-800">
                     <div className="flex justify-between">
                       <p className="text-base font-medium">/{url.slug}</p>
-                      <div>
-                        <button>x</button>
+                      <div className="flex gap-2 text-sm">
+                        <button onClick={() => { alert('Clicked') }} className="cursor-default" type="button">
+                          <FiCopy />
+                        </button>
+                        <button onClick={() => { alert('Clicked') }} className="cursor-default" type="button">
+                          <IoMdClose />
+                        </button>
                       </div>
                     </div>
                     <p className="text-base opacity-60">{url.url}</p>

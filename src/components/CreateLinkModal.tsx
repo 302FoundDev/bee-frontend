@@ -84,16 +84,12 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
           transition={{ duration: 0.3 }}
           onClick={closeModal}
         >
-          <div
-            className="absolute inset-0 backdrop-blur-xs"
-            style={{ background: 'rgba(0, 0, 0, .1)' }}
-          />
         </motion.div>
       )}
 
       {isModalOpen && (
         <motion.div
-          className="absolute border rounded-lg h-[480px] w-full sm:w-auto p-4 bg-white dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800 z-20"
+          className="absolute border mx-auto rounded-lg h-[480px] w-full sm:w-auto p-4 bg-white dark:bg-neutral-950/50 border-neutral-300 dark:border-neutral-800 z-20"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
