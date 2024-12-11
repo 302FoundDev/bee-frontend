@@ -2,6 +2,7 @@ import { CreateSlugModal } from "../components/CreateLinkModal"
 import { motion } from "framer-motion"
 import { useAuth } from "../context/AuthContext"
 import Loading from "./Loading"
+import { Users } from "lucide-react"
 
 export const Links = () => {
   const { user, isLoading } = useAuth()
@@ -38,30 +39,41 @@ export const Links = () => {
             </div>
           </div>
 
-          <div>
-            <div className="px-4 py-2 border rounded h-28 w-96 border-zinc-800">
-              {user?.email}
-            </div>
-          </div>
+          {
+            user?.urls.length === 0 ? (
+              <div className="flex flex-col items-center mt-16">
+                <div>
+                  <img
+                    src="/empty-box.svg"
+                    className="mx-auto size-14"
+                    alt="empty box"
+                  />
+                  <p className="mt-2 mb-4 opacity-50">No links shortened, yet...</p>
+                </div>
 
-          <div className="flex flex-col items-center mt-16">
-            <div>
-              <img
-                src="/empty-box.svg"
-                className="mx-auto size-14"
-                alt="empty box"
-              />
-              <p className="mt-2 mb-4 opacity-50">No links shortened, yet...</p>
-            </div>
-
-            <div>
-              <CreateSlugModal children={createNewSlug} />
-            </div>
-          </div>
+                <div>
+                  <CreateSlugModal children={createNewSlug} />
+                </div>
+              </div>
+            ) : (
+              <div className="grid items-center grid-cols-3 gap-3">
+                {user?.urls.map((url) => (
+                  <li key={url.id} className="flex flex-col justify-between w-full gap-2 px-4 py-4 border rounded-lg h-22 border-zinc-800">
+                    <div className="flex justify-between">
+                      <p className="text-base font-medium">/{url.slug}</p>
+                      <div>
+                        <button>x</button>
+                      </div>
+                    </div>
+                    <p className="text-base opacity-60">{url.url}</p>
+                  </li>
+                ))}
+              </div>
+            )
+          }
 
         </motion.div>
       }
     </main>
   )
 }
-

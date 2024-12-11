@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, ReactNode, useEffect } from "react"
+import { TbHorse } from "react-icons/tb";
 
 interface UserUrl {
   id: number;
@@ -81,15 +82,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       const data = await response.json()
 
-      if (response.ok) {
-        setUser(data.data)
-        setIsAuthenticated(true)
-        window.location.replace(callbackUrl)
+      if (!response.ok) {
+        setUser(null)
+        throw new Error('Error signing in')
       }
 
-      else {
-        throw new Error(data.message)
-      }
+      setUser(data.data)
+      setIsAuthenticated(true)
+      window.location.href = callbackUrl
 
     }
     catch (error) {

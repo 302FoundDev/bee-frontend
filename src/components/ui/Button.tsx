@@ -31,7 +31,7 @@ export const Button = ({
     exotic: 'bg-indigo-700 hover:bg-indigo-800',
     transparent: 'bg-transparent border border-zinc-500 hover:bg-neutral-800',
     gradient: 'from-indigo-600 via-pink-600 to-purple-600 bg-gradient-to-r',
-    base: 'rounded-md px-4 py-2',
+    base: 'rounded-md w-full px-4 py-1.5 bg-neutral-800 text-white hover:bg-transparent',
   }
 
   const sizeVariants = {

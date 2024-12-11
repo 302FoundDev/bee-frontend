@@ -66,7 +66,7 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
     <section className="flex flex-col items-center">
 
       <Button
-        className="w-full bg-transparent inline-flex items-center gap-1.5 bg-neutral-800 border-neutral-300 border-neutral-800"
+        className="inline-flex items-center gap-1.5 border border-neutral-300 dark:border-neutral-800"
         variant="base"
         size="md"
         onClick={openModal}
@@ -93,7 +93,7 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
 
       {isModalOpen && (
         <motion.div
-          className="mt-18 w-80 border rounded-md h-[480px] lg:w-[470px] p-4 bg-white dark:bg-black border-neutral-300 dark:border-neutral-800 z-20"
+          className="absolute border rounded-lg h-[480px] w-full sm:w-auto p-4 bg-white dark:bg-neutral-900 border-neutral-300 dark:border-neutral-800 z-20"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
