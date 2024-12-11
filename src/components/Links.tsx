@@ -58,9 +58,9 @@ export const Links = () => {
                 </div>
               </div>
             ) : (
-              <div className="grid items-center grid-cols-3 gap-3">
+              <div className="grid items-center grid-cols-1 gap-3 sm:grid-cols-3">
                 {user?.urls.map((url) => (
-                  <li key={url.id} className="flex flex-col justify-between w-full gap-2 px-4 py-4 border rounded-lg shadow-sm h-22 border-zinc-300 dark:border-zinc-800">
+                  <li key={url.id} className="flex flex-col justify-between w-full gap-2 px-4 py-4 border rounded-lg shadow-sm dark:bg-transparent bg-neutral-100 h-22 border-zinc-300 dark:border-zinc-800">
                     <div className="flex justify-between">
                       <p className="text-base font-medium">/{url.slug}</p>
                       <div className="flex gap-2 text-sm">

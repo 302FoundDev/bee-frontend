@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'regal-light': '#f0e7db',
+      }
+    },
   },
   plugins: [],
 }
