@@ -66,7 +66,7 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
     <section className="flex flex-col items-center">
 
       <Button
-        className="inline-flex items-center gap-1.5 border border-neutral-300 dark:border-neutral-800"
+        className="inline-flex bg-blue-600 items-center gap-1.5 border border-neutral-300 dark:border-neutral-800"
         variant="base"
         size="md"
         onClick={openModal}
@@ -89,43 +89,43 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
 
       {isModalOpen && (
         <motion.div
-          className="absolute border mx-auto rounded-lg h-[480px] w-full sm:w-auto p-4 bg-white dark:bg-neutral-950/50 border-neutral-300 dark:border-neutral-800 z-20"
+          className="absolute border mx-auto rounded-lg h-[480px] w-full sm:w-auto text-neutral-950 font-medium p-4 bg-white dark:bg-neutral-950/50 border-neutral-300 dark:border-neutral-800 z-20"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3 }}
         >
           <div className="flex items-center justify-between mb-12">
-            <h3>Create a new link: </h3>
+            <h3 className="mx-auto text-lg font-bold text-neutral-700">Create a new link</h3>
             <button onClick={closeModal} type="button">
               <IoMdClose />
             </button>
           </div>
           <form onSubmit={handleSubmit}>
-            <label className="flex flex-col mb-6 text-[15px] text-black dark:text-gray-200">
+            <label className="flex flex-col mb-6 text-[15px] font dark:text-gray-200">
               Destination URL:
               <input
                 name="url"
                 type="text"
                 placeholder="https://example.com"
-                className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
+                className="px-4 py-2 mt-1 bg-transparent border rounded-md dark:placeholder:text-neutral-400 border-neutral-300 dark:border-neutral-800"
               />
             </label>
-            <label className="flex flex-col text-[15px] mb-6 text-black dark:text-gray-200">
+            <label className="flex flex-col text-[15px] mb-6 dark:text-gray-200">
               Short link (optional):
               <input
                 name="slug"
                 type="text"
                 placeholder="yourCustomLink"
-                className="px-4 py-2 mt-1 border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
+                className="px-4 py-2 mt-1 bg-transparent border rounded-md dark:placeholder:text-neutral-400 border-neutral-300 dark:border-neutral-800"
               />
             </label>
 
-            <label className="text-[15px] text-black dark:text-gray-200">
+            <label className="text-[15px] dark:text-gray-200">
               Description:
               <textarea
                 name="description"
-                className="w-full h-20 px-4 py-2 mt-1 overflow-auto border rounded-md bg-slate-200/70 placeholder:text-black border-neutral-300 dark:border-neutral-800"
+                className="w-full h-20 px-4 py-2 mt-1 overflow-auto bg-transparent border rounded-md dark:placeholder:text-neutral-400 border-neutral-300 dark:border-neutral-800"
                 placeholder="Enter a description"
               />
             </label>
@@ -133,16 +133,16 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
             <div className="inline-flex items-end justify-end w-full gap-2 mt-8">
               <Button
                 onClick={closeModal}
-                variant="secondary"
-                className="w-24 border border-neutral-300 dark:border-neutral-800"
+                variant="base"
+                className="w-24 bg-blue-600 border border-neutral-300 dark:border-neutral-800"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="inline-flex items-center gap-1 border w-28 border-neutral-300 dark:border-neutral-800"
-                variant="secondary"
-                disabled={loading} // Deshabilitar el botón durante la carga
+                className="inline-flex items-center justify-center gap-1 bg-blue-600 border w-28 border-neutral-300 dark:border-neutral-800"
+                variant="base"
+                disabled={loading}
               >
                 {loading ? (
                   <span className="loader"></span> // Puedes mostrar un spinner aquí
