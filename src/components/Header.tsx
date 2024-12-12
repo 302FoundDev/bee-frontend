@@ -23,34 +23,30 @@ export const Header = () => {
           <div className="flex items-center gap-4">
             <li className="mr-2">
               <a
-                className="transition ease-in-out hover:opacity-80"
+                className="flex items-center gap-1 transition ease-in-out hover:scale-105"
                 href="https://github.com/302FoundDev/bee-frontend/issues/new"
                 target="_blank"
                 rel="noopener"
               >
-                <span className="flex items-center gap-1">
-                  <LiaBugSolid className="size-5" />
-                  Bugs
-                </span>
+                <LiaBugSolid className="size-5" />
+                Bugs
               </a>
             </li>
 
             <li>
               <a
-                className="transition ease-in-out hover:opacity-80"
+                className="flex transition ease-in-out hover:scale-105"
                 target="_blank"
                 rel="noopener"
                 href="https://github.com/LaCocinaDePapa/beely"
               >
-                <span className="flex items-center gap-2">
-                  <FaGithubAlt className="flex size-5" />
-                </span>
+                <FaGithubAlt className="flex size-5" />
               </a>
             </li>
 
-            <div>
+            <li>
               <ToggleTheme />
-            </div>
+            </li>
 
             <li>
               <DropDownProfile />

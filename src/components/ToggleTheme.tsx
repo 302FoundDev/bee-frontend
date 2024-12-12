@@ -24,7 +24,7 @@ export const ToggleTheme = () => {
         <>
             <button
                 onClick={handleToggle}
-                className="flex items-center justify-center gap-1 p-1.5 transition-all duration-200 ease-in-out rounded-full hover:bg-zinc-800"
+                className="flex items-center justify-center gap-1 p-1.5 transition duration-200 ease-in-out rounded-full hover:bg-zinc-800 hover:scale-105"
                 aria-label={`Change theme ${selectedTheme === "light" ? "dark" : "light"}`}
             >
                 {selectedTheme === "light" ? (

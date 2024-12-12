@@ -88,7 +88,7 @@ export const DropDownProfile = () => {
       ) : (
         <Link
           to="signin"
-          className="flex items-center gap-2 text-sm px-4 py-1.5 font-semibold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-lg"
+          className="flex items-center transition ease-in-out gap-2 text-sm px-4 py-1.5 font-semibold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 rounded-lg hover:scale-105"
         >
           Get started
         </Link>
