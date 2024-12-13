@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { createSlug } from "../services/api"
 import Confetti from 'react-confetti-boom'
 import { BsPlusCircleDotted } from "react-icons/bs";
+import Loading from "./Loading"
 
 
 interface CreateSlugModalProps {
@@ -15,8 +16,6 @@ interface CreateSlugModalProps {
 export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState<string | null>(null)
   const [showConfetti, setShowConfetti] = useState(false);
 
   if (showConfetti) {
@@ -145,7 +144,10 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
                 disabled={loading}
               >
                 {loading ? (
-                  <span className="loader"></span> // Puedes mostrar un spinner aquí
+                  <div className="flex gap-1">
+                    <Loading />
+                    <span>Creating...</span>
+                  </div>
                 ) : (
                   <>
                     <MdRocketLaunch />
@@ -155,9 +157,6 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
               </Button>
             </div>
           </form>
-
-          {error && <p className="text-red-500">{error}</p>}
-          {success && <p className="text-green-500">{success}</p>}
         </motion.div>
       )}
     </section>
