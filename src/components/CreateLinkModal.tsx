@@ -62,8 +62,8 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
     <section className="flex flex-col items-center">
 
       <Button
-        className="inline-flex bg-blue-600 items-center gap-1.5 border border-neutral-300 dark:border-neutral-800"
-        variant="base"
+        className="inline-flex rounded-lg items-center gap-1.5 border border-neutral-300 dark:border-neutral-800"
+        variant="gradient"
         size="md"
         onClick={openModal}
       >
@@ -85,7 +85,7 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
 
       {isModalOpen && (
         <motion.div
-          className="absolute border mx-auto rounded-lg h-[480px] w-full sm:w-auto text-neutral-950 font-medium p-4 bg-white dark:bg-neutral-950/50 border-neutral-300 dark:border-neutral-800 z-20"
+          className="absolute border mx-auto left-0 right-0 rounded-lg h-[500px] max-w-screen-sm sm:w-auto text-neutral-950 font-medium p-4 bg-white dark:bg-neutral-950/50 border-neutral-300 dark:border-neutral-800 z-20"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
@@ -130,21 +130,21 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
               <Button
                 onClick={closeModal}
                 variant="base"
-                className="w-24 bg-blue-600 border border-neutral-300 dark:border-neutral-800"
+                className="w-24 bg-blue-600 border border-neutral-300 dark:border-neutral-800 dark:hover:bg-transparent"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="inline-flex items-center justify-center gap-1 bg-blue-600 border w-28 border-neutral-300 dark:border-neutral-800"
+                className="inline-flex items-center justify-center gap-1 bg-blue-600 border w-28 border-neutral-300 dark:border-neutral-800 dark:hover:bg-transparent"
                 variant="base"
                 disabled={loading}
               >
                 {loading ? (
-                  <div className="flex gap-1">
+                  <>
                     <Loading />
-                    <span>Creating...</span>
-                  </div>
+                    Creating...
+                  </>
                 ) : (
                   <>
                     <MdRocketLaunch />
