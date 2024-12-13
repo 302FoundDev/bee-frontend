@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, ReactNode, useEffect } from "react"
-import { TbHorse } from "react-icons/tb";
+import { BACKEND_URL } from "../config";
 
 interface UserUrl {
   id: number;
@@ -34,13 +34,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  const API_URL = 'http://localhost:9000/auth'
-  const API_USER_URL = 'http://localhost:9000/users'
-
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch(`${API_USER_URL}/profile`, {
+        const response = await fetch(`${BACKEND_URL}/users/profile`, {
           method: 'GET',
           credentials: 'include'
         })
@@ -73,7 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signin = async (credentials: any, callbackUrl = '/dashboard') => {
     try {
-      const response = await fetch(`${API_URL}/login`, {
+      const response = await fetch(`${BACKEND_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
@@ -90,7 +87,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(data.data)
       setIsAuthenticated(true)
       window.location.href = callbackUrl
-
     }
     catch (error) {
       console.error(error)
@@ -100,7 +96,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signup = async (credentials: any, callbackUrl = '/dashboard') => {
     try {
-      const response = await fetch(`${API_USER_URL}/register`, {
+      const response = await fetch(`${BACKEND_URL}/users/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
@@ -127,7 +123,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signout = async () => {
     try {
-      const response = await fetch(`${API_URL}/logout`, {
+      const response = await fetch(`${BACKEND_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include'
       })

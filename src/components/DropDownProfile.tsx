@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
+import { FaUserCircle } from "react-icons/fa"
 import { TiHomeOutline } from "react-icons/ti";
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoMdLogOut } from "react-icons/io";
@@ -49,11 +50,8 @@ export const DropDownProfile = () => {
     <>
       {isAuthenticated ? (
         <div className="relative flex">
-          <button onClick={openDrop}>
-            <img
-              className="relative z-10 rounded-full size-8"
-              src="https://flowbite-react.com/images/people/profile-picture-5.jpg"
-            />
+          <button className="relative z-10" onClick={openDrop}>
+            <FaUserCircle className="size-7" />
           </button>
 
           {isDropOpen && (<div onClick={closeDrop} className="fixed inset-0 z-0"></div>)}
