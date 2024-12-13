@@ -41,18 +41,15 @@ export const CreateSlugModal: React.FC<CreateSlugModalProps> = ({ children }) =>
     const description = formData.get('description') as string
 
     setLoading(true)
-    setError(null)
-    setSuccess(null)
 
     try {
       const response = await createSlug(url, slug, description)
-      setSuccess("Link created successfully!")
       setShowConfetti(true)
       return response
     }
 
     catch (error) {
-      setError("Failed to create slug. Please try again.")
+      throw new Error("Failed to create slug. Please try again.")
     }
 
     finally {
