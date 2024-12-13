@@ -30,7 +30,7 @@ export const Button = ({
     outlined: 'border-2 border-pink-700 hover:bg-pink-700 hover:text-white',
     exotic: 'bg-indigo-700 hover:bg-indigo-800',
     transparent: 'bg-transparent border border-zinc-500 hover:bg-neutral-800',
-    gradient: 'from-indigo-600 via-pink-600 to-purple-600 bg-gradient-to-r',
+    gradient: 'font-medium from-indigo-600 via-pink-600 to-purple-600 bg-gradient-to-r',
     base: 'rounded-md w-full px-4 text-neutral-100 py-1.5 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 dark:hover:text-neutral-100 dark:hover:bg-neutral-850',
   }
 

@@ -45,7 +45,7 @@ export const UserProfileUpdate = () => {
       transition={{ duration: 0.4, ease: "linear" }}
     >
       <div className="px-4 mx-auto space-y-8 max-w-screen-2xl">
-        <div className="overflow-hidden border rounded-md shadow border-zinc-300 dark:border-neutral-800 bg-neutral-100 dark:bg-transparent sm:rounded-lg">
+        <div className="overflow-hidden bg-white border rounded-md shadow border-zinc-300 dark:border-neutral-800 dark:bg-transparent sm:rounded-lg">
           <div className="px-4 py-5 sm:px-6">
             <h2 className="text-3xl font-semibold leading-6 text-gray-900 dark:text-white">
               General
@@ -111,7 +111,9 @@ export const UserProfileUpdate = () => {
               <div className="mt-8">
                 <Button
                   type="submit"
-                  className={`px-4 py-2 text-sm font-medium text-white flex items-center gap-2 bg-red-500 rounded-md dark:bg-red-600 ${isDeleting ? "opacity-50 cursor-not-allowed" : "hover:bg-red-600"}`}
+                  variant="gradient"
+                  size="lg"
+                  className="flex items-center gap-2 text-white rounded-md"
                 >
                   <IoSaveOutline />
                   Save
@@ -121,7 +123,7 @@ export const UserProfileUpdate = () => {
           </div>
         </div>
 
-        <div className="flex flex-col px-5 py-5 border rounded-md shadow bg-neutral-100 border-zinc-300 dark:border-neutral-800 dark:bg-transparent lg:mt-0 sm:mt-28">
+        <div className="flex flex-col px-5 py-5 bg-white border rounded-md shadow border-zinc-300 dark:border-neutral-800 dark:bg-transparent lg:mt-0 sm:mt-28">
           <div>
             <h2 className="text-3xl font-semibold">Account</h2>
             <p className="mt-3 text-sm text-gray-700 dark:text-gray-400">
